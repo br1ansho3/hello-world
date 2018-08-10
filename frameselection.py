@@ -59,6 +59,20 @@ class example(QLabel):
             self.release_x = e.pos().x()
             self.release_y = e.pos().y()
             print(self.release_x, self.release_y)
+class my_band(QRubberBand):
+    def __init__(self, shape, parent=None):
+        super().__init__(shape, parent)
+        self.initUI()
+        
+    def initUI(self):
+        palette = QPalette()
+        palette.setBrush(QPalette.Highlight, QBrush(Qt.red))
+        self.setPalette(palette)
+        
+    
+    def mousePressEvent(self, e):
+        if e.button() == Qt.RightButton:
+            print('hi')
            
 if __name__ == '__main__':
     app = QApplication(sys.argv)
